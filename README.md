@@ -1,1 +1,1 @@
-# COVID-19 Cases and Influenza Vaccine Rates Across Virginia
+# Project 2: COVID-19 Cases and Influenza Vaccine Rates Across Virginia
