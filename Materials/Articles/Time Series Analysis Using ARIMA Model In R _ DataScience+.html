@@ -1,0 +1,534 @@
+<!doctype html>
+
+<!---
+Copyright 2017 The AMP Start Authors. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS-IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<html lang='en'>
+
+<head>
+  <meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="alternate" type="application/rss+xml" title="DataScience+ &raquo; Time Series Analysis Using ARIMA Model In R Comments Feed" href="https://datascienceplus.com/time-series-analysis-using-arima-model-in-r/feed/" />
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/datascienceplus.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.7.1"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://datascienceplus.com/wp-includes/css/dist/block-library/style.min.css?ver=6.7.1' type='text/css' media='all' />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='contact-form-7-css' href='https://datascienceplus.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.0' type='text/css' media='all' />
+<link rel='stylesheet' id='theme-my-login-css' href='https://datascienceplus.com/wp-content/plugins/theme-my-login/assets/styles/theme-my-login.min.css?ver=7.1.7' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-featherlight-css' href='https://datascienceplus.com/wp-content/plugins/wp-featherlight/css/wp-featherlight.min.css?ver=1.3.4' type='text/css' media='all' />
+<script type="text/javascript" src="https://datascienceplus.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://datascienceplus.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<link rel="https://api.w.org/" href="https://datascienceplus.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://datascienceplus.com/wp-json/wp/v2/posts/10677" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://datascienceplus.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.7.1" />
+<link rel="canonical" href="https://datascienceplus.com/time-series-analysis-using-arima-model-in-r/" />
+<link rel='shortlink' href='https://datascienceplus.com/?p=10677' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://datascienceplus.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdatascienceplus.com%2Ftime-series-analysis-using-arima-model-in-r%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://datascienceplus.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdatascienceplus.com%2Ftime-series-analysis-using-arima-model-in-r%2F&#038;format=xml" />
+<link rel="icon" href="https://datascienceplus.com/wp-content/uploads/2018/07/cropped-favicon-2-2-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://datascienceplus.com/wp-content/uploads/2018/07/cropped-favicon-2-2-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://datascienceplus.com/wp-content/uploads/2018/07/cropped-favicon-2-2-180x180.png" />
+<meta name="msapplication-TileImage" content="https://datascienceplus.com/wp-content/uploads/2018/07/cropped-favicon-2-2-270x270.png" />
+  <link href="https://datascienceplus.com/wp-content/themes/m01/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:500|Rubik:700|Nunito:600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://datascienceplus.com/wp-content/themes/m01/funs/search.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="https://datascienceplus.com/wp-content/themes/m01/favicon.png" />
+  <meta charset="utf-8">
+  <title>  Time Series Analysis Using ARIMA Model In R |  DataScience+        </title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+</head>
+<body>
+
+<div class="site-header">
+  <div class="site-brand">
+    <a href="/">
+    <img src="https://datascienceplus.com/wp-content/themes/m01/images/logo-dsnew.png" width="154" height="20" alt="DataScience+"/>
+  </a>
+  </div>
+  <button type="button" class="site-search"></button>
+</div>
+
+<div class="site-header site-header-search hide">
+  <form
+    method="GET"
+    action="https://datascienceplus.com/"
+    target="_top">
+  <input type="text" class="site-search-input" placeholder="Search, e.g., missing values, and press enter." name="s">
+  <button type="reset" class="site-search site-search-reset"></a>
+    </form>
+</div>
+<!-- start header -->
+<header id="welcome-wrapper-single">
+
+
+
+
+
+
+
+
+    <!-- START SINGLE -->
+  <div class="welcome-text-single">
+  <span class="welcome-single"><h1>Time Series Analysis Using ARIMA Model In R</h1></span>
+
+    </div>
+    <nav class="categories-background">
+      <div class="postinfo-inner">
+        <ul>
+
+        <li>
+        <div class="name-prefix">Written By</div>
+
+        <div class="data-prefix">
+           <img alt='' src='https://secure.gravatar.com/avatar/4be929e8bbc06a8476a51af2162d50ea?s=20&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/4be929e8bbc06a8476a51af2162d50ea?s=40&#038;d=mm&#038;r=g 2x' class='avatar avatar-20 photo' height='20' width='20' decoding='async'/><a href="https://datascienceplus.com/author/chatterjee-subhasree/" title="Posts by Subhasree Chatterjee" rel="author">Subhasree Chatterjee</a>        </div>
+        </li>
+
+        <li>
+        <div class="name-prefix">Program</div>
+        <a href="/" rel="nofollow">R Project</a>
+                    </li>
+
+        <li>
+        <div class="name-prefix">Published</div>
+        <time class="data-prefix">Jan 30, 2018</time>
+        </li>
+
+
+        <li><div class="name-prefix">Updated</div> <div class="data-prefix">Feb 5, 2018</div></li>
+</ul>
+</div>
+        </nav>
+  <!-- END SINGLE -->
+
+
+
+
+
+</header>
+
+
+
+
+
+
+<!-- start index.php -->
+<!-- end index.php -->
+<!-- start page.php -->
+<!-- end page.php -->
+      <!-- start main -->
+    <main id="content" role="main" class="">
+    <article class="post-entry">
+  <p>Time series data are data points collected over a period of time as a sequence of time gap. Time series data analysis means analyzing the available data to find out the pattern or trend in the data to predict some future values which will, in turn, help more effective and optimize business decisions.</p>
+<h2>Methods for time series analysis</h2>
+<p><a href="https://datascienceplus.com/wp-content/uploads/2018/01/AAEAAQAAAAAAAAPtAAAAJDg2NTNiMjM3LTlmYjQtNGYwOS04NmFhLTMyODkwODNlYzY2Mg.png"><img fetchpriority="high" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/AAEAAQAAAAAAAAPtAAAAJDg2NTNiMjM3LTlmYjQtNGYwOS04NmFhLTMyODkwODNlYzY2Mg-490x139.png" alt="" width="490" height="139" class="alignnone size-medium wp-image-10681" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/AAEAAQAAAAAAAAPtAAAAJDg2NTNiMjM3LTlmYjQtNGYwOS04NmFhLTMyODkwODNlYzY2Mg-490x139.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/AAEAAQAAAAAAAAPtAAAAJDg2NTNiMjM3LTlmYjQtNGYwOS04NmFhLTMyODkwODNlYzY2Mg-768x218.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/AAEAAQAAAAAAAAPtAAAAJDg2NTNiMjM3LTlmYjQtNGYwOS04NmFhLTMyODkwODNlYzY2Mg.png 800w" sizes="(max-width: 490px) 100vw, 490px" /></a></p>
+<p>Moreover, time series analysis can be classified as:</p>
+<ul>
+<li>1. Parametric and Non-parametric</li>
+<li>2. Linear and Non-linear and</li>
+<li>3. Univariate and multivariate</li>
+</ul>
+<p>Techniques used for time series analysis:</p>
+<ul>
+<li>1. ARIMA models</li>
+<li>2. Box-Jenkins multivariate models</li>
+<li>3. Holt winters exponential smoothing (single, double and triple)</li>
+</ul>
+<h2>ARIMA modeling</h2>
+<p>ARIMA is the abbreviation for AutoRegressive Integrated Moving Average. Auto Regressive (AR) terms refer to the lags of the differenced series, Moving Average (MA) terms refer to the lags of errors and I is the number of difference used to make the time series stationary.</p>
+<h3>Assumptions of ARIMA model</h3>
+<ul>
+<li>1. Data should be stationary – by stationary it means that the properties of the series doesn’t depend on the time when it is captured. A white noise series and series with cyclic behavior can also be considered as stationary series.</li>
+<li>2. Data should be univariate &#8211; ARIMA works on a single variable. Auto-regression is all about regression with the past values.</li>
+</ul>
+<p>Steps to be followed for ARIMA modeling:</p>
+<ul>
+<li>1. Exploratory analysis</li>
+<li>2. Fit the model</li>
+<li>3. Diagnostic measures</li>
+</ul>
+<p>The first step in time series data modeling using R is to convert the available data into time series data format. To do so we need to run the following command in R:</p>
+<pre>tsData = ts(RawData, start = c(2011,1), frequency = 12)</pre>
+<p>where <code>RawData</code> is the univariate data which we are converting to time series. start</code> gives the starting time of the data, in this case, its Jan 2011. As it is a monthly data so ‘frequency=12’.</p>
+<p>This is how the actual dataset looks like:<br />
+<a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.58.27-PM.png"><img decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.58.27-PM-490x141.png" alt="" width="490" height="141" class="alignnone size-medium wp-image-10764" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.58.27-PM-490x141.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.58.27-PM-768x221.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.58.27-PM-1024x295.png 1024w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.58.27-PM.png 1312w" sizes="(max-width: 490px) 100vw, 490px" /></a></p>
+<p>We can infer from the graph itself that the data points follows an overall upward trend with some outliers in terms of sudden lower values. Now we need to do some analysis to find out the exact non-stationary and seasonality in the data.</p>
+<h3>Exploratory analysis</h3>
+<ul>
+<li>1. Autocorrelation analysis to examine serial dependence: Used to estimate which value in the past has a correlation with the current value. Provides the p,d,q estimate for ARIMA models.</li>
+<li>2. Spectral analysis to examine cyclic behavior: Carried out to describe how variation in a time series may be accounted for by cyclic components. Also referred to as a Frequency Domain analysis. Using this, periodic components in a noisy environment can be separated out.</li>
+<li>3. Trend estimation and decomposition: Used for seasonal adjustment. It seeks to construct, from an observed time series, a number of component series(that could be used to reconstruct the original series) where each of these has a certain characteristic. </li>
+</ul>
+<p>Before performing any EDA on the data, we need to understand the three components of a time series data:</p>
+<ul>
+<li>Trend: A long-term increase or decrease in the data is referred to as a trend. It is not necessarily linear. It is the underlying pattern in the data over time.</li>
+<li>Seasonal: When a series is influenced by seasonal factors i.e. quarter of the year, month or days of a week seasonality exists in the series. It is always of a fixed and known period. E.g. &#8211; A sudden rise in sales during Christmas, etc. </li>
+<li>Cyclic: When data exhibit rises and falls that are not of the fixed period we call it a cyclic pattern. For e.g. &#8211; duration of these fluctuations is usually of at least 2 years. </li>
+</ul>
+<p>We can use the following R code to find out the components of this time series:</p>
+<pre>components.ts = decompose(tsData)
+plot(components.ts)</pre>
+<p>The output will look like this:<br />
+<a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.59.40-PM.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.59.40-PM-490x204.png" alt="" width="490" height="204" class="alignnone size-medium wp-image-10765" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.59.40-PM-490x204.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.59.40-PM-768x319.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.59.40-PM-1024x426.png 1024w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.59.40-PM-1320x549.png 1320w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-12.59.40-PM.png 1404w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<p>Here we get 4 components:</p>
+<ul>
+<li>Observed &#8211; the actual data plot</li>
+<li>Trend &#8211; the overall upward or downward movement of the data points</li>
+<li>Seasonal &#8211; any monthly/yearly pattern of the data points</li>
+<li>Random &#8211; unexplainable part of the data</li>
+</ul>
+<p>Observing these 4 graphs closely, we can find out if the data satisfies all the assumptions of ARIMA modeling, mainly, stationarity and seasonality.</p>
+<p>Next, we need to remove non-stationary part for ARIMA. For the sake of discussion here, we will remove the seasonal part of the data as well. The seasonal part can be removed from the analysis and added later, or it can be taken care of in the ARIMA model itself.</p>
+<p>To achieve stationarity:</p>
+<ul>
+<li>difference the data &#8211; compute the differences between consecutive observations</li>
+<li>log or square root the series data to stabilize non-constant variance</li>
+<li>if the data contains a trend, fit some type of curve to the data and then model the residuals from that fit</li>
+<li>Unit root test &#8211; This test is used to find out that first difference or regression which should be used on the trending data to make it stationary. In Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test, small p-values suggest differencing is required.</li>
+</ul>
+<p>The R code for unit root test:</p>
+<pre>library("fUnitRoots")
+urkpssTest(tsData, type = c("tau"), lags = c("short"),use.lag = NULL, doplot = TRUE)
+tsstationary = diff(tsData, differences=1)
+plot(tsstationary)</pre>
+<p>The output will look like this:<br />
+<a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.00.17-PM.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.00.17-PM-490x236.png" alt="" width="490" height="236" class="alignnone size-medium wp-image-10766" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.00.17-PM-490x236.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.00.17-PM-768x370.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.00.17-PM-1024x493.png 1024w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.00.17-PM-1320x635.png 1320w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.00.17-PM.png 1446w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<p>After removing non-stationarity:<br />
+<a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.02.51-PM.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.02.51-PM-490x166.png" alt="" width="490" height="166" class="alignnone size-medium wp-image-10767" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.02.51-PM-490x166.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.02.51-PM-768x260.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.02.51-PM-1024x347.png 1024w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.02.51-PM.png 1316w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<p>Various plots and functions that help in detecting seasonality:</p>
+<ul>
+<li>A seasonal subseries plot</li>
+<li>Multiple box plot</li>
+<li>Auto correlation plot</li>
+<li><code>ndiffs()</code> is used to determine the number of first differences required to make the time series non-seasonal</li>
+</ul>
+<p>R codes to calculate autocorrelation:</p>
+<pre>acf(tsData,lag.max=34) </pre>
+<p><a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.05.52-PM.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.05.52-PM-490x105.png" alt="" width="490" height="105" class="alignnone size-medium wp-image-10768" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.05.52-PM-490x105.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.05.52-PM-768x164.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.05.52-PM-1024x219.png 1024w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.05.52-PM.png 1298w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<p>The autocorrelation function <code>(acf())</code> gives the autocorrelation at all possible lags. The autocorrelation at lag 0 is included by default which always takes the value 1 as it represents the correlation between the data and themselves. As we can infer from the graph above, the autocorrelation continues to decrease as the lag increases, confirming that there is no linear association between observations separated by larger lags.</p>
+<pre>timeseriesseasonallyadjusted &lt;- tsData- timeseriescomponents$seasonal
+tsstationary &lt;- diff(timeseriesseasonallyadjusted, differences=1)</pre>
+<p>To remove seasonality from the data, we subtract the seasonal component from the original series and then difference it to make it stationary.</p>
+<p>After removing seasonality and making the data stationary, it will look like:<br />
+<a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.06.48-PM.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.06.48-PM-490x157.png" alt="" width="490" height="157" class="alignnone size-medium wp-image-10769" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.06.48-PM-490x157.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.06.48-PM-768x246.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.06.48-PM-1024x328.png 1024w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.06.48-PM.png 1318w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<p>Smoothing is usually done to help us better see patterns, trends in time series. Generally it smooths out the irregular roughness to see a clearer signal. For seasonal data, we might smooth out the seasonality so that we can identify the trend. Smoothing doesn’t provide us with a model, but it can be a good first step in describing various components of the series. </p>
+<p>To smooth time series:</p>
+<ul>
+<li>
+Ordinary moving average (single, centered) &#8211; at each point in time we determine averages of observed values that precede a particular time.<br />
+To take away seasonality from a series, so we can better see a trend, we would use a moving average with a length = seasonal span. Seasonal span is the time period after which a seasonality repeats, e.g. &#8211; 12 months if seasonality is noticed every December. Thus in the smoothed series, each smoothed value has been averaged across the complete season period.</li>
+<li>Exponentially weighted average – at each point of time, it applies weighting factors which decrease exponentially. The weighting for each older datum decreases exponentially and never reaching zero.</li>
+</ul>
+<h3>Fit the model</h3>
+<p>Once the data is ready and satisfies all the assumptions of modeling, to determine the order of the model to be fitted to the data, we need three variables: p, d, and q which are non-negative integers that refer to the order of the autoregressive, integrated, and moving average parts of the model respectively.</p>
+<p>To examine which p and q values will be appropriate we need to run <code>acf()</code> and <code>pacf()</code> function.</p>
+<p><code>pacf()</code> at lag k is autocorrelation function which describes the correlation between all data points that are exactly k steps apart- after accounting for their correlation with the data between those k steps. It helps to identify the number of autoregression (AR) coefficients(p-value) in an ARIMA model.</p>
+<p>The R code to run the <code>acf()</code> and <code>pacf()</code>  commands.</p>
+<pre>acf(tsstationary, lag.max=34)
+pacf(tsstationary, lag.max=34)</pre>
+<p>The plots will look like:<br />
+<a href="https://datascienceplus.com/wp-content/uploads/2018/01/2.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/2-490x274.png" alt="" width="490" height="274" class="alignnone size-medium wp-image-10689" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/2-490x274.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/2-768x430.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/2.png 800w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<p>Shape of <code>acf()</code> to define values of p and q:<br />
+Looking at the graphs and going through the table we can determine which type of the model to select and what will be the values of p, d and q.<br />
+<a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.08.12-PM.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.08.12-PM-490x245.png" alt="" width="490" height="245" class="alignnone size-medium wp-image-10770" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.08.12-PM-490x245.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.08.12-PM-768x384.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.08.12-PM-1024x512.png 1024w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.08.12-PM.png 1308w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<pre>fitARIMA &lt;- arima(tsData, order=c(1,1,1),seasonal = list(order = c(1,0,0), period = 12),method=&quot;ML&quot;)
+library(lmtest)
+coeftest(fitARIMA) </pre>
+<p><code>order</code> specifies the non-seasonal part of the ARIMA model: (p, d, q) refers to the AR order, the degree of difference, and the MA order.</p>
+<p><code>seasonal</code> specifies the seasonal part of the ARIMA model, plus the period (which defaults to frequency(x) i.e 12 in this case). This function requires a list with components order and period, but given a numeric vector of length 3, it turns them into a suitable list with the specification as the ‘order’.</p>
+<p><code>method</code> refers to the fitting method, which can be ‘maximum likelihood(ML)’ or ‘minimize conditional sum-of-squares(CSS)’. The default is conditional-sum-of-squares.</p>
+<p><a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.09.18-PM.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.09.18-PM-490x302.png" alt="" width="490" height="302" class="alignnone size-medium wp-image-10771" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.09.18-PM-490x302.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.09.18-PM-768x474.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.09.18-PM-1024x632.png 1024w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.09.18-PM-1320x815.png 1320w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.09.18-PM.png 1322w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<p>This is a recursive process and we need to run this <code>arima()</code> function with different (p,d,q) values to find out the most optimized and efficient model.</p>
+<p>The output from <code>fitarima()</code> includes the fitted coefficients and the standard error (s.e.) for each coefficient. Observing the coefficients we can exclude the insignificant ones. We can use a function <code>confint()</code> for this purpose.<br />
+We can use a function confint() for this purpose. </p>
+<pre>confint(fitARIMA)</pre>
+<p><a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.11.19-PM.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.11.19-PM-490x105.png" alt="" width="490" height="105" class="alignnone size-medium wp-image-10772" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.11.19-PM-490x105.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.11.19-PM-768x164.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.11.19-PM-1024x219.png 1024w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.11.19-PM.png 1298w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<h3>Choosing the best model</h3>
+<p>R uses maximum likelihood estimation (MLE) to estimate the ARIMA model. It tries to maximize the log-likelihood for given values of p, d, and q when finding parameter estimates so as to maximize the probability of obtaining the data that we have observed.</p>
+<p>Find out Akaike’s Information Criterion (AIC) for a set of models and investigate the models with lowest AIC values. Try Schwarz Bayesian Information Criterion (BIC) and investigate the models with lowest BIC values. When estimating model parameters using maximum likelihood estimation, it is possible to increase the likelihood by adding additional parameters, which may result in over fitting. The BIC resolves this problem by introducing a penalty term for the number of parameters in the model. Along with AIC and BIC, we also need to closely watch those coefficient values and we should decide whether to include that component or not according to their significance level.</p>
+<h3>Diagnostic measures</h3>
+<p>Try to find out the pattern in the residuals of the chosen model by plotting the ACF of the residuals, and doing a portmanteau test. We need to try modified models if the plot doesn’t look like white noise.</p>
+<p>Once the residuals look like white noise, calculate forecasts.</p>
+<h3>Box-Ljung test</h3>
+<p>It is a test of independence at all lags up to the one specified. Instead of testing randomness at each distinct lag, it tests the &quot;overall&quot; randomness based on a number of lags, and is therefore a portmanteau test. It is applied to the residuals of a fitted ARIMA model, not the original series, and in such applications the hypothesis actually being tested is that the residuals from the ARIMA model have no autocorrelation.</p>
+<p>R code to obtain the box test results:</p>
+<pre>acf(fitARIMA$residuals)
+library(FitAR)
+boxresult-LjungBoxTest (fitARIMA$residuals,k=2,StartLag=1)
+plot(boxresult[,3],main= "Ljung-Box Q Test", ylab= "P-values", xlab= "Lag")
+qqnorm(fitARIMA$residuals)
+qqline(fitARIMA$residuals)</pre>
+<p>Output:<br />
+<a href="https://datascienceplus.com/wp-content/uploads/2018/01/3.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/3-490x328.png" alt="" width="490" height="328" class="alignnone size-medium wp-image-10690" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/3-490x328.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/3.png 677w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<p>The ACF of the residuals shows no significant autocorrelations.</p>
+<p><a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.18.13-PM.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.18.13-PM-490x149.png" alt="" width="490" height="149" class="alignnone size-medium wp-image-10776" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.18.13-PM-490x149.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.18.13-PM.png 652w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<p>The p-values for the Ljung-Box Q test all are well above 0.05, indicating “non-significance.”</p>
+<p>The values are normal as they rest on a line and aren&#8217;t all over the place.<br />
+<a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.18.21-PM.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.18.21-PM-490x155.png" alt="" width="490" height="155" class="alignnone size-medium wp-image-10775" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.18.21-PM-490x155.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.18.21-PM.png 653w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<p>As all the graphs are in support of the assumption that there is no pattern in the residuals, we can go ahead and calculate the forecast.</p>
+<h3>Work flow diagram</h3>
+<p> <a href="https://datascienceplus.com/wp-content/uploads/2018/01/6.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/6.png" alt="" width="362" height="464" class="alignnone size-full wp-image-10693" /></a></p>
+<p><code>auto.arima()</code> function:<br />
+The forecast package provides two functions: <code>ets()</code> and <code>auto.arima()</code> for the automatic selection of exponential and ARIMA models.</p>
+<p>The <code>auto.arima()</code> function in R uses a combination of unit root tests, minimization of the AIC and MLE to obtain an ARIMA model.</p>
+<p>KPSS test is used to determine the number of differences (d) In Hyndman-Khandakar algorithm for automatic ARIMA modeling.</p>
+<p>The p,d, and q are then chosen by minimizing the AICc. The algorithm uses a stepwise search to traverse the model space to select the best model with smallest AICc.</p>
+<p>If d=0 then the constant c is included; if d≥1 then the constant c is set to zero. Variations on the current model are considered by varying p and/or q from the current model by ±1 and including/excluding c from the current model.</p>
+<p>The best model considered so far (either the current model, or one of these variations) becomes the new current model.</p>
+<p>Now, this process is repeated until no lower AIC can be found.</p>
+<pre>auto.arima(tsData, trace=TRUE) </pre>
+<p><a href="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.14.28-PM.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.14.28-PM-490x313.png" alt="" width="490" height="313" class="alignnone size-medium wp-image-10773" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.14.28-PM-490x313.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.14.28-PM-768x491.png 768w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.14.28-PM-1024x655.png 1024w, https://datascienceplus.com/wp-content/uploads/2018/01/Screen-Shot-2018-02-05-at-1.14.28-PM.png 1286w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<h3>Forecasting using an ARIMA model</h3>
+<p>The parameters of that ARIMA model can be used as a predictive model for making forecasts for future values of the time series once the best-suited model is selected for time series data.</p>
+<p>The d-value effects the prediction intervals —the prediction intervals increases in size with higher values of ‘d’. The prediction intervals will all be essentially the same when d=0 because the long-term forecast standard deviation will go to the standard deviation of the historical data.</p>
+<p>There is a function called predict() which is used for predictions from the results of various model fitting functions. It takes an argument n.ahead() specifying how many time steps ahead to predict.</p>
+<pre>predict(fitARIMA,n.ahead = 5)</pre>
+<p><code>forecast.Arima()</code> function in the <code>forecast</code> R package can also be used to forecast for future values of the time series. Here we can also specify the confidence level for prediction intervals by using the <code>level</code> argument.</p>
+<pre>futurVal &lt;- forecast.Arima(fitARIMA,h=10, level=c(99.5))
+plot.forecast(futurVal)</pre>
+<p>We need to make sure that the forecast errors are not correlated, normally distributed with mean zero and constant variance. We can use the diagnostic measure to find out the appropriate model with best possible forecast values. </p>
+<p><a href="https://datascienceplus.com/wp-content/uploads/2018/01/7.png"><img loading="lazy" decoding="async" src="https://datascienceplus.com/wp-content/uploads/2018/01/7-490x369.png" alt="" width="490" height="369" class="alignnone size-medium wp-image-10694" srcset="https://datascienceplus.com/wp-content/uploads/2018/01/7-490x369.png 490w, https://datascienceplus.com/wp-content/uploads/2018/01/7.png 643w" sizes="auto, (max-width: 490px) 100vw, 490px" /></a></p>
+<p>The forecasts are shown as a blue line, with the 80% prediction intervals as a dark shaded area, and the 95% prediction intervals as a light shaded area.</p>
+<p>This is the overall process by which we can analyze time series data and forecast values from existing series using ARIMA.</p>
+<p><a href="https://github.com/SubhasreeUC/Master/blob/master/TimeSeriesExample.R">Click here</a> to get the entire code.</p>
+<h3>References</h3>
+<ul><a href="https://www.otexts.org/fpp/8/1">Stationarity and differencing</a><br />
+<a href="http://www.statmethods.net/advstats/timeseries.html">Time Series and Forecasting</a><br />
+<a href="http://stat.ethz.ch/R-manual/R-patched/library/stats/html/">stats</a><br />
+<a href="http://bioinformatics.sdstate.edu/users/gex/index/indexfiles/ch1.pdf" rel="nofollow">sdstate</a><br />
+<a href="http://people.duke.edu/~rnau/seasarim.htm">General seasonal ARIMA models</a></ul>
+
+<div class="tags-link">
+<span><a href="https://datascienceplus.com/tag/arima/">ARIMA</a></span><span><a href="https://datascienceplus.com/tag/time-series/">Time Series</a></span>
+</div>
+</article>
+<!-- end main -->
+</main>
+
+
+
+<aside class="categories-background">
+<div class="sharethepost">
+  <span>Share the Post</span>
+  <ul>
+    <li>
+    <a target="_blank" href="https://www.facebook.com/sharer.php?u=https://datascienceplus.com/time-series-analysis-using-arima-model-in-r/" title="Share this post on Facebook!"  rel="nofollow"><i class="fa fa-facebook"></i> Facebook</a>
+    </li>
+    <li>
+    <a target="_blank" href="https://twitter.com/intent/tweet?text=Time+Series+Analysis+Using+ARIMA+Model+In+R%20https://datascienceplus.com/time-series-analysis-using-arima-model-in-r/%20%23rstats%20via%20@datascienceplus" title="Share this post on Twitter!"  rel="nofollow"><i class="fa fa-twitter"></i> Twitter</a>
+    </li>
+    <li>
+    <a class="_blank" href="http://reddit.com/submit?url=https://datascienceplus.com/time-series-analysis-using-arima-model-in-r/&title=Time Series Analysis Using ARIMA Model In R" title="Share this post on Reddit!" rel="nofollow"><i class="fa fa-reddit"></i> Reddit</a>
+    </li>
+    <li>
+    <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https://datascienceplus.com/time-series-analysis-using-arima-model-in-r/&title=&source=LinkedIn" title="Share this post on Linkedin!"  rel="nofollow"><i class="fa fa-linkedin"></i> Linkedin</a>
+    </li>
+    <li class="email-share">
+    <a title="Share by email" href="/cdn-cgi/l/email-protection#a19ed2d4c3cbc4c2d59c81f5c8ccc481f2c4d3c8c4d281e0cfc0cdd8d2c8d281f4d2c8cfc681e0f3e8ece081eccec5c4cd81e8cf81f3818c81e5c0d5c0f2c2c8c4cfc2c48a8187c0ccd19ac3cec5d89c81e9c88f81e881c7ced4cfc581c0cf81c0d3d5c8c2cdc481d5c9c0d581d8ced481ccc8c6c9d581cdc8cac49b81f5c8ccc481f2c4d3c8c4d281e0cfc0cdd8d2c8d281f4d2c8cfc681e0f3e8ece081eccec5c4cd81e8cf81f3818c81c9d5d5d1d29b8e8ec5c0d5c0d2c2c8c4cfc2c4d1cdd4d28fc2cecc8ed5c8ccc48cd2c4d3c8c4d28cc0cfc0cdd8d2c8d28cd4d2c8cfc68cc0d3c8ccc08ccccec5c4cd8cc8cf8cd38e" rel="nofollow"><i class="fa fa-envelope"></i> Email this</a>
+    </li>
+</ul>
+</div>
+</aside>
+
+<aside class="categories-background">
+  <div class="postinfo-inner-footer">
+    <ul>
+
+    <li>
+    <div class="name-prefix">Author Disclosure</div>
+
+    <div class="data-prefix">
+              Subhasree Chatterjee
+does not work or receive funding from any company or organization that would benefit from this article. Views expressed here are personal and not supported by university or company.
+               </div>
+    </li>
+  </li>
+
+</ul>
+</div>
+</aside>
+<aside class="categories-background">
+    <div class="postinfo-inner-footer">
+      <ul>
+
+      <li>
+    <div class="name-prefix">Report Post</div>
+    <div class="data-prefix"><a style="color:#C04425;" href="https://datascienceplus.com/contact-us/" rel="nofollow noindex">Issues with Content</a></div>
+    </li>
+
+  </ul>
+</div>
+</aside>
+
+<!-- end single.php -->
+
+
+
+<!-- authors populat post -->
+<nav class="popularpost-background">
+		  <div class="popularpost-inner">
+			<span>More Articles from the Author</span><li><a href="https://datascienceplus.com/survival-analysis-part-i/">Survival Analysis &#8211; Part I</a></li></ul></div></nav>  <nav class="footer1-background">
+    <div class="categories-inner">
+<span>Categories</span>
+<ul>
+  <li><a href="/category/introduction/">Introduction</a></li>
+  <li><a href="/category/getting-data/">Getting Data</a></li>
+  <li><a href="/category/data-management/">Data Management</a></li>
+  <li><a href="/category/visualizing-data/">Visualizing Data</a></li>
+  <li><a href="/category/basic-statistics/">Basic Statistics</a></li>
+  <li><a href="/category/regression-models/">Regression Models</a></li>
+  <li><a href="/category/advanced-modeling/">Advanced Modeling</a></li>
+  <li><a href="/category/programming/">Programming</a></li>
+</ul></div></nav>
+
+  <!-- Start Footer -->
+  <section class="footerbg">
+  <footer class="ampstart-footer flex flex-column items-center px3 ">
+
+
+    <nav class="login">
+        <span><a href="/privacy-policy/" rel="nofollow noindex">Privacy</a></span>
+        <span><a href="/terms-of-service/" rel="nofollow noindex">Terms</a></span>
+        <span><a href="/disclosure/" rel="nofollow noindex">Disclosure</a></span>
+        <span><a href="/contact-us/" rel="nofollow noindex">Contact</a></span>
+  </nav>
+
+
+      2015 - 2024 DataSciencePlus.com
+
+<aside class="socialfooter">
+          <ul>
+      <li><a href="https://www.facebook.com/datascienceplus" title="Facebook"><i class="fa fa-facebook-official fa-lg"></i></a></li>
+      <li><a href="https://twitter.com/datascienceplus" title="Twitter"><i class="fa fa-twitter fa-lg"></i></a></li>
+      <li><a href="https://www.linkedin.com/company/10203574" title="LinkedIn"><i class="fa fa-linkedin fa-lg"></i></a></li>
+      <li><a href="https://feeds.feedburner.com/datascienceplus" title="Subscribe"><i class="fa fa fa-rss fa-lg"></i></a></li>
+      </ul>
+</aside>
+
+  </footer></section>
+  <!-- End Footer -->
+
+  <!-- google analytics -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-93513186-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <!-- stacounter -->
+  <script type="text/javascript">
+  var sc_project=10637365;
+  var sc_invisible=1;
+  var sc_security="74bbea50";
+  var scJsHost = (("https:" == document.location.protocol) ?
+  "https://secure." : "http://www.");
+  document.write("<sc"+"ript type='text/javascript' src='" +
+  scJsHost+
+  "statcounter.com/counter/counter.js'></"+"script>");
+  </script>
+  </body>
+
+  <!-- cookies consent -->
+  <link rel="stylesheet" type="text/css" href="https://datascienceplus.com/wp-content/themes/m01/funs/cookieconsent.min.css" />
+  <script src="https://datascienceplus.com/wp-content/themes/m01/funs/cookieconsent.min.js"></script>
+  <script>
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    "palette": {
+    "popup": {
+      "background": "#616159",
+      "text": "#ffffff"
+    },
+    "button": {
+      "background": "#7fb069",
+      "text": "#ffffff"
+    }
+  },
+    "theme": "edgeless",
+    "content": {
+      "href": "/privacy-policy/"
+    }
+  })});
+  </script>
+
+
+<script type="text/javascript" src="https://datascienceplus.com/wp-includes/js/dist/hooks.min.js?ver=4d63a3d491d11ffd8ac6" id="wp-hooks-js"></script>
+<script type="text/javascript" src="https://datascienceplus.com/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://datascienceplus.com/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.0" id="swv-js"></script>
+<script type="text/javascript" id="contact-form-7-js-before">
+/* <![CDATA[ */
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/datascienceplus.com\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://datascienceplus.com/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.0" id="contact-form-7-js"></script>
+<script type="text/javascript" id="theme-my-login-js-extra">
+/* <![CDATA[ */
+var themeMyLogin = {"action":"","errors":[]};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://datascienceplus.com/wp-content/plugins/theme-my-login/assets/scripts/theme-my-login.min.js?ver=7.1.7" id="theme-my-login-js"></script>
+<script type="text/javascript" src="https://datascienceplus.com/wp-content/plugins/wp-featherlight/js/wpFeatherlight.pkgd.min.js?ver=1.3.4" id="wp-featherlight-js"></script>
+<script src="https://datascienceplus.com/wp-content/themes/m01/funs/jquery.min.js"></script>
+<script  src="https://datascienceplus.com/wp-content/themes/m01/funs/search.js"></script>
+<script  src="https://datascienceplus.com/wp-content/themes/m01/funs/popup-social.js"></script>
+<script  src="https://datascienceplus.com/wp-content/themes/m01/funs/copyclipboard.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+</body>
+</html>
