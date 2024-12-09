@@ -1,1 +1,1 @@
-# Project 2: COVID-19 Cases and Influenza Vaccine Rates Across Virginia
+# Welcome to a Case Study on COVID-19 Cases and Influenza Vaccine Rates Across Virginia!
