@@ -1,4 +1,4 @@
-Case Study on COVID-19 Cases and Influenza Vaccine Rates Across Virginia
+# Case Study on COVID-19 Cases and Influenza Vaccine Rates Across Virginia
 ## Software and Platform
 ### Coding for this project was done in both R studio and Python.
 - R Packages: dplyr, ggplot2, zoo, forecast
