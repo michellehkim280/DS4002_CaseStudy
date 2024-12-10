@@ -6,6 +6,7 @@ The hook document providing context and outlining the case study is the file lab
 The cleaned time series data intended to be used for analysis is called Vaccination_Cases.csv. You may also find the raw dataset below: 
 
 Flu Vaccination Rates: https://data.cdc.gov/Flu-Vaccinations/Influenza-Vaccination-Coverage-for-All-Ages-6-Mont/vh55-3he6/about_data 
+
 COVID-19 Cases: https://data.cdc.gov/Case-Surveillance/COVID-19-Case-Surveillance-Public-Use-Data-with-Ge/n8mc-b4w4/about_data
 
 ## Reference Materials
