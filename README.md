@@ -1,11 +1,20 @@
 # Case Study on COVID-19 Cases and Influenza Vaccine Rates Across Virginia
 ## Hook and Rubric Documents
-The hook document outlining the case study is the file labeled CS2Hook_Gerrymandering.pdf. The rubric CS2Rubric_Gerrymandering.pdf outlines the formatting, submission requirements, and final deliverables for this assignment. Both documents should be referenced continously throughout your completion of the case study to guarantee success on the assignment.
+The hook document providing context and outlining the case study is the file labeled Hook.pdf. The rubric file called Rubric!.pdf outlines the formatting, submission requirements, and final deliverables for this assignment. These documents should be read in their entirety before beginning and referenced while working. 
 
 ## Data
-The image data can be obtained from FiveThirtyEight linked here. The Materials folder contains several images for various states, but there are more states to choose from on FiveThirtyEight. Additionally, you can find the declination angle (i.e., the numeric representation of the degree of partisan gerrymandering in a state) here, which you will use to verify the results of your image analysis.
+The cleaned time series data intended to be used for analysis is called Vaccination_Cases.csv. You may also find the raw dataset below: 
+Flu Vaccination Rates: https://data.cdc.gov/Flu-Vaccinations/Influenza-Vaccination-Coverage-for-All-Ages-6-Mont/vh55-3he6/about_data 
+COVID-19 Cases: https://data.cdc.gov/Case-Surveillance/COVID-19-Case-Surveillance-Public-Use-Data-with-Ge/n8mc-b4w4/about_data
 
 ## Reference Materials
-Hendricks, T. (2021, December 10). Detecting and measuring gerrymandering with python. Medium. https://towardsdatascience.com/detecting-and-measuring-gerrymandering-with-python-f85a1315acd4
+Chatterjee, S. (2018, January 30). Time series analysis using ARIMA model in R. DataScience+. https://datascienceplus.com/time-series-analysis-using-arima-model-in-r/
 
-Bycoffe, A., Koeze, E., Wasserman, D., & Wolfe, J. (2018, January 25). The Atlas Of Redistricting. FiveThirtyEight. https://projects.fivethirtyeight.com/redistricting-mapsastly, we copied over the "Cases" column from the second dataset of COVID-19 Cases and added it in as a new column in the final dataset.
+Centers for Disease Control and Prevention. (2024). Influenza vaccination coverage for all ages 6 months and older, United States [Data set]. CDC. https://data.cdc.gov/Flu-Vaccinations/Influenza-Vaccination-Coverage-for-All-Ages-6-Mont/vh55-3he6
+
+Centers for Disease Control and Prevention. (2024). COVID-19 case surveillance public use data with geography [Data set]. CDC. https://data.cdc.gov/Case-Surveillance/COVID-19-Case-Surveillance-Public-Use-Data-with-Ge/n8mc-b4w4
+
+Rubin, R. (2021). Influenza’s unprecedented low profile during COVID-19 pandemic leaves experts wondering what this flu season has in store. JAMA, 326(10), 899–900. https://doi.org/10.1001/jama.2021.14131
+
+
+
